@@ -17,14 +17,14 @@ const isLocalhost = (): boolean => Boolean(
 
 /**
  * Check if the hostname matches the hosted location.
- * @param hostname
+ * @param name - hostname e.g. https://localhost:3000 -> localhost
  * @returns If hostname matches, return true
  */
-const enval = (hostname: string): () => boolean => {
-  if (hostname === 'localhost') {
+const hostname = (name: string): () => boolean => {
+  if (name === 'localhost') {
     return isLocalhost
   }
-  return () => window.location.hostname === hostname
+  return () => window.location.hostname === name
 }
 
 
@@ -35,10 +35,10 @@ const enval = (hostname: string): () => boolean => {
  */
 const resolvenv = (envParams: Array<EnvParam>) => {
   for (let envParam of envParams) {
-    if (envParam.judge()) {
+    if (envParam.env()) {
       return envParam.value
     }
   }
 }
 
-export { enval, resolvenv }
+export { hostname, resolvenv }

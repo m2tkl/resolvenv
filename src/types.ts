@@ -1,4 +1,4 @@
 export interface EnvParam {
-  judge: () => boolean,
+  env: () => boolean,
   value: unknown
 }

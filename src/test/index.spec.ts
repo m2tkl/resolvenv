@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { enval, resolvenv, EnvParam } from '../index'
+import { hostname, resolvenv, EnvParam } from '../index'
 
 describe('judgenv test', () => {
   let windowSpy: any;
@@ -15,9 +15,9 @@ describe('judgenv test', () => {
   });
 
   const testEnvParams: Array<EnvParam> = [
-    { judge: enval('localhost'), value: 'api.local-env' },
-    { judge: enval('dev-hostname'), value: 'api.dev-env' },
-    { judge: enval('prod-hostname'), value: 'api.prod-env' },
+    { env: hostname('localhost'), value: 'api.local-env' },
+    { env: hostname('dev-hostname'), value: 'api.dev-env' },
+    { env: hostname('prod-hostname'), value: 'api.prod-env' },
   ]
 
   it('localhost', () => {
